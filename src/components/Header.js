@@ -1,13 +1,15 @@
 import React from 'react';
-import SearchModal from './header/SearchModal';
-import Notifications from './header/Notifications';
-import Help from './header/Help';
 import UserMenu from './header/UserMenu';
+import UserAvatar from '../images/user-avatar-32.png';
+import { Link } from 'react-router-dom';
 
 function Header({
   sidebarOpen,
   setSidebarOpen
 }) {
+
+  const token = localStorage.getItem("token");
+
   return (
     <header className="sticky top-0 bg-white border-b border-gray-200 z-30">
       <div className="px-4 sm:px-6 lg:px-8">
@@ -36,13 +38,15 @@ function Header({
           {/* Header: Right side */}
           <div className="flex items-center">
 
-            <SearchModal />
-            <Notifications />
-            <Help />
             {/*  Divider */}
             <hr className="w-px h-6 bg-gray-200 mx-3" />
-            <UserMenu />
-
+              {token ? 
+                <UserMenu /> :  
+                <>
+                  <img className="w-8 h-8 rounded-full" src={UserAvatar} width="32" height="32" alt="User" />
+                  <Link to="/login"><span className="truncate ml-2 text-sm font-medium group-hover:text-gray-800">Login</span></Link> 
+                </>
+              }
           </div>
 
         </div>

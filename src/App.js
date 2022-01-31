@@ -6,7 +6,7 @@ import './css/style.scss';
 import './charts/ChartjsConfig';
 
 // Import pages
-import Dashboard from './pages/Dashboard';
+import Main from './pages/Main';
 
 function App() {
 
@@ -20,7 +20,7 @@ function App() {
 
   return (
     <>
-      <Dashboard />
+      <Main />
     </>
   );
 }

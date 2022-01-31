@@ -1,17 +1,17 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-
-import { useEffect, useState } from 'react';
-import axios from 'axios';
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { userProfileNews } from "../../api/users";
 import { news } from '../../api/news';
-import { apiKey } from '../../constants/apiKey';
-import Tabla from '../../components/tables';
-import Loader from '../../utils/loader';
-import NotificationModal from '../../components/modals/notificationModal';
+import NotificationModal from "../../components/modals/notificationModal";
+import Tabla from "../../components/tables";
+import { apiKey } from "../../constants/apiKey";
+import Loader from "../../utils/loader";
 
-const News = () => {
+const Newslist = () => {
 
+    const [user, setUser] = useState({});
+    const [newsData, setNewsData] = useState({});
     const [headers, setHeaders] = useState([]);
-    const [data, setData] = useState({});
     const [currentPage, setCurrentPage] = useState(1);
     const [notificationModal, setNotificationModal] = useState({
         open: false,
@@ -48,15 +48,15 @@ const News = () => {
         }
     }
 
-    const getDataTable = () => {
-        axios.get(`${news}?page=${currentPage}`, config)
-        .then(res => {
+    const getUserNews = () => {
+        axios.get(userProfileNews, config).then(res => {
             const { data } = res;
             setHeaders(Object.values(data.headers));
-            setData(data.noticias);
+            setUser(data.user);
+            setNewsData(data.news);
         }).catch(err => {
             console.error(err);
-        });
+        })
     }
 
     const deleteNoticia = (id) => {
@@ -67,6 +67,8 @@ const News = () => {
         .then(res => {
             const { data } = res;
             setCloseNotificationModal();
+            setNewsData({});
+            getUserNews();
             setCurrentPage(1);
             setTimeout(() => {
                 setOpenNotificationModal(data.message, 'notification');
@@ -77,17 +79,17 @@ const News = () => {
     }
 
     useEffect(() => {
-        setData({});
-        getDataTable();
+        setNewsData({});
+        getUserNews();
     }, [currentPage]);
 
-    return (
+    return(
         <>
-            {(data && Object.keys(data).length > 0) ?
+            {(newsData && Object.keys(newsData).length > 0) ?
                 (
                     <Tabla
                         headers={headers}
-                        rows={data}
+                        rows={newsData}
                         type="news"
                         changePage={setCurrentPage}
                         page={currentPage}
@@ -109,7 +111,7 @@ const News = () => {
                 handleDelete={deleteNoticia}
             />
         </>
-    );
+    )
 }
 
-export default News;
+export default Newslist;

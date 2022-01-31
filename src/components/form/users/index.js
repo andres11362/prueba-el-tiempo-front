@@ -2,7 +2,7 @@ import axios from "axios";
 import { useState } from "react"
 import { registerUser, editUser } from '../../../api/users';
 
-const UserForm = ({ setOpen, id, notification }) => {
+const UserForm = ({ setOpen, changePage, setNotificationModal }) => {
 
     const [data, setData] = useState({
         'name': '',
@@ -22,7 +22,12 @@ const UserForm = ({ setOpen, id, notification }) => {
 
         axios.post(registerUser, data)
         .then(res => {
-            console.log(res)
+            const { data } = res;
+            setOpen();
+            changePage(1);
+            setTimeout(() => {
+                setNotificationModal(data.message, 'notification');
+            }, 3000);
         }).catch(err => {
             console.error(err)
         })
@@ -64,11 +69,16 @@ const UserForm = ({ setOpen, id, notification }) => {
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
                     />
                 </div>
-                <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Enviar</button>
-                <button 
-                    onClick={() => setOpen()}
-                    type="button" 
-                    class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">Cerrar</button>
+                <div className="mt-3 float-right">
+                <button type="submit" class="mx-1 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Enviar</button>
+                    <button 
+                        onClick={() => setOpen()}
+                        type="button" 
+                        class="mx-1 text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800"
+                    >
+                        Cerrar
+                    </button>
+                </div>
             </form>
         </>
     )

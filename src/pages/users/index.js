@@ -6,12 +6,36 @@ import { users } from '../../api/users';
 import { apiKey } from '../../constants/apiKey';
 import Tabla from '../../components/tables';
 import Loader from '../../utils/loader';
+import NotificationModal from '../../components/modals/notificationModal';
 
 const Users = () => {
 
     const [headers, setHeaders] = useState([]);
     const [data, setData] = useState({});
-    const [currentPage, setCurrentPage] = useState(1)
+    const [currentPage, setCurrentPage] = useState(1);
+    const [notificationModal, setNotificationModal] = useState({
+        open: false,
+        message: '',
+        action: ''
+    });
+
+    const setOpenNotificationModal = (message, action, id = '') => {
+        setNotificationModal({
+            ...notificationModal,
+            open: true,
+            message,
+            action
+        });
+    }
+
+    const setCloseNotificationModal = () => {
+        setNotificationModal({
+            ...notificationModal,
+            open: false,
+            message: '',
+            action: ''
+        });
+    }
 
     const config = {
         headers: {
@@ -21,23 +45,44 @@ const Users = () => {
 
     const getDataTable = () => {
         axios.get(`${users}?page=${currentPage}`, config)
-        .then(res => {
-            const { data } = res;
-            setHeaders(Object.values(data.headers));
-            setData(data.users);
-        }).catch(err => {
-            console.error(err);
-        });
+            .then(res => {
+                const { data } = res;
+                setHeaders(Object.values(data.headers));
+                setData(data.users);
+            }).catch(err => {
+                console.error(err);
+            });
     }
 
     useEffect(() => {
         setData({});
         getDataTable();
     }, [currentPage]);
-    
-    return(
+
+    return (
         <>
-            { (data && Object.keys(data).length > 0) ? (<Tabla headers={headers} rows={data} type="users" changePage={setCurrentPage} page={currentPage} />) : <Loader /> }
+            {(data && Object.keys(data).length > 0) ?
+                (
+                    <Tabla
+                        headers={headers}
+                        rows={data}
+                        type="users"
+                        changePage={setCurrentPage}
+                        page={currentPage}
+                        setNotificationModal={setOpenNotificationModal}
+                        setCloseNotificationModal={setCloseNotificationModal}
+                    />
+                ) 
+                : 
+                <Loader />
+            }
+             <NotificationModal
+                open={notificationModal.open}
+                setOpen={setOpenNotificationModal}
+                setClose={setCloseNotificationModal}
+                message={notificationModal.message}
+                action={notificationModal.action}
+            />
         </>
     );
 }

@@ -9,3 +9,6 @@ export const firstAccessUser = `${apiKey}/first-access-user`;
 export const editUser = `${apiKey}/edit-user`;
 export const users = `${apiKey}/users`;
 export const forgot = `${apiKey}/forgot`;
+export const recovery = `${apiKey}/reset`;
+export const userProfile = `${apiKey}/user`;
+export const userProfileNews = `${apiKey}/user-news`;

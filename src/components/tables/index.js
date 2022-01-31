@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Modal from '../modals';
 import { routeFiles } from '../../constants/routeFiles';
+import NotificationModal from '../modals/notificationModal';
 
 /**
  * Componente tabla, cada consulta sin importar 
@@ -8,7 +9,17 @@ import { routeFiles } from '../../constants/routeFiles';
  * a este control
  */
 
-const Tabla = ({ headers, rows, type, changePage, page, handleDelete }) => {
+const Tabla = ({ 
+  headers, 
+  rows, 
+  type, 
+  changePage, 
+  page, 
+  setNotificationModal,
+  setCloseNotificationModal
+}) => {
+
+  console.log(rows);
 
   const [lastPage] = useState(rows.last_page);
   const pageNumbers = [];
@@ -17,7 +28,13 @@ const Tabla = ({ headers, rows, type, changePage, page, handleDelete }) => {
     title: '',
     action: ''
   });
+  const [row, setRow] = useState({});
 
+  const getData = (data) => {
+    setRow(data);
+    setOpenModal('Editar registro', 'edit');
+  }
+ 
   const setOpenModal = (titulo, action) => {
     setModal({
       ...modal,
@@ -39,14 +56,14 @@ const Tabla = ({ headers, rows, type, changePage, page, handleDelete }) => {
     pageNumbers.push(index + 1);
   }
 
-  const actionButtons = (id) => (
+  const actionButtons = (data) => (
     <tr className="p-3 text-center flex justify-center">
       {type !== 'users' && (
         <>
-          <button href="#" class="bg-transparent border border-yellow-500 text-yellow-500 hover:bg-yellow-500 hover:text-white text-center py-2 px-4 rounded">
+          <button onClick={() => getData(data)} href="#" class="mx-1 bg-transparent border border-yellow-500 text-yellow-500 hover:bg-yellow-500 hover:text-white text-center py-2 px-4 rounded">
             Editar
           </button>
-          <button onClick={() => handleDelete(id)} href="#" class="bg-transparent border border-red-500 text-red-500 hover:bg-red-500 hover:text-white text-center py-2 px-4 rounded">
+          <button onClick={() => setNotificationModal('¿Esta seguro que desea borrar este registro?', 'delete', data.id )} href="#" class="mx-1 bg-transparent border border-red-500 text-red-500 hover:bg-red-500 hover:text-white text-center py-2 px-4 rounded">
             Eliminar
           </button>
         </>
@@ -55,7 +72,7 @@ const Tabla = ({ headers, rows, type, changePage, page, handleDelete }) => {
   );
 
   const RenderRow = (props) => props.keys.map((key, index) => (
-    <td>
+    <td className='max-w-1'>
       {key !== 'acciones' ? (
         <div key={index} className="text-center">
           {typeof(props.data[key]) === 'string' && (props.data[key].startsWith('http') || props.data[key].startsWith('public')) ? 
@@ -64,12 +81,25 @@ const Tabla = ({ headers, rows, type, changePage, page, handleDelete }) => {
               rel='noreferrer' 
               href={ props.data[key].startsWith('http') ? props.data[key] : `${routeFiles}${props.data[key]}`}
               >Enlace
-            </a> : props.data[key] 
+            </a> : 
+            ( typeof(props.data[key]) === 'string' && props.data[key].length > 20 ? 
+              (  
+                <p 
+                  className='text-clip overflow-hidden ...'
+                >
+                    {`${props.data[key]}...`}
+                </p> 
+              ) : (
+                <p>
+                    {`${props.data[key]}`}
+                </p>
+              )
+            )
           }
         </div>
       ) : (
         <div key={index} className="text-center">
-          {actionButtons(props.data['id'])}
+          {actionButtons(props.data)}
         </div>
       )}
     </td>
@@ -89,7 +119,7 @@ const Tabla = ({ headers, rows, type, changePage, page, handleDelete }) => {
   const paginator = () => (
     <>
       <div className="font-semibold text-center my-3">
-        <h5>{`Pagina ${page} de ${lastPage}`}</h5>
+        <h5 className='my-1'>{`Pagina ${page} de ${lastPage}`}</h5>
         <nav
           className='relative z-0 inline-flex rounded-md shadow-sm -space-x-px'
           aria-label='Pagination'
@@ -132,7 +162,7 @@ const Tabla = ({ headers, rows, type, changePage, page, handleDelete }) => {
 
   return (
     <>
-      <div className="col-span-full xl:col-span-8 bg-white shadow-lg rounded-sm border border-gray-200">
+      <div className="w-11/12 m-auto col-span-full xl:col-span-8 bg-white shadow-lg rounded-sm border border-gray-200">
         <header className="px-5 py-4 border-b border-gray-100 flex space-x-10">
           <div className='w-full overflow-hidden float-left'>
             <h2 className="font-semibold text-gray-800">Tabla</h2>
@@ -176,9 +206,13 @@ const Tabla = ({ headers, rows, type, changePage, page, handleDelete }) => {
         setOpen={setCloseModal}
         type={type}
         title={modal.title}
+        data={row}
+        action={modal.action}
+        changePage={changePage}
+        setNotificationModal={setNotificationModal}
+        setCloseNotificationModal={setCloseNotificationModal}
       />
     </>
-
   );
 }
 
