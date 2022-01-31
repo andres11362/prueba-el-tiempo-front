@@ -14,7 +14,7 @@ const SectionForm = ({ setOpen, row, action, changePage, setNotificationModal })
 
     const config = {
         headers: {
-            'Authorization': `Bearer ${apiKey}`,
+            'Authorization': `Bearer ${localStorage.getItem("token")}`,
             'Content-Type': 'multipart/form-data'
         }
     }
@@ -52,6 +52,7 @@ const SectionForm = ({ setOpen, row, action, changePage, setNotificationModal })
                 }, 3000);;
             }).catch(err => {
                 console.error(err)
+                setNotificationModal('Un error ha ocurrido, intente nuevamente', 'notification');
             })
     }
 

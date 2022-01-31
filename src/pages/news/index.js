@@ -44,7 +44,7 @@ const News = () => {
 
     const config = {
         headers: {
-            'Authorization': `Bearer ${apiKey}`
+            'Authorization': `Bearer ${localStorage.getItem("token")}`
         }
     }
 
@@ -56,6 +56,7 @@ const News = () => {
             setData(data.noticias);
         }).catch(err => {
             console.error(err);
+            setNotificationModal('Un error ha ocurrido, intente nuevamente', 'notification');
         });
     }
 

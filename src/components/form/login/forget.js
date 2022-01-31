@@ -47,6 +47,7 @@ const Forget = () => {
             setOpenNotificationModal(res.data.message, 'notification');
         }).catch(err => {
             console.error(err);
+            setOpenNotificationModal('Un error ha ocurrido, intente nuevamente', 'notification');
         });
     }
 

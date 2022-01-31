@@ -11,6 +11,8 @@ const PublicPage = () => {
     const getData = () => {
         axios.get(newsList).then(res => {
             setData(res.data);
+        }).catch(err => {
+            console.error(err);
         })
     }
 

@@ -44,7 +44,7 @@ const Newslist = () => {
 
     const config = {
         headers: {
-            'Authorization': `Bearer ${apiKey}`
+            'Authorization': `Bearer ${localStorage.getItem("token")}`
         }
     }
 

@@ -12,9 +12,6 @@ const PrivateRoute = () => {
 
   return (
     <Switch>
-      <Route exact path="/home">
-        <Dashboard />
-      </Route>
       <Route exact path="/users">
         <Users />
       </Route>
@@ -33,7 +30,10 @@ const PrivateRoute = () => {
       <Route path="/my-news">
         <Newslist />
       </Route>
-      <Redirect to='/home' />
+      <Route path="/home">
+        <Dashboard />
+      </Route>
+      <Redirect to='/' />
     </Switch>
   )
 }

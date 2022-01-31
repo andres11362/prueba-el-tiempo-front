@@ -56,6 +56,7 @@ const RecoveryPassword = () => {
             }, 3000);
         }).catch(err => {
             console.error(err);
+            setOpenNotificationModal('Un error ha ocurrido, intente nuevamente', 'notification');
         });
     }
 

@@ -3,9 +3,6 @@ import { Link, useHistory } from "react-router-dom";
 import Loader from '../../utils/loader';
 
 const Main = ({ news }) => {
-
-    console.log(news);
-
     return (
         <section>
             <div className="m-4 lg:flex lg:flex-wrap">

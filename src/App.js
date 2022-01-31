@@ -1,9 +1,8 @@
 import React, { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { BrowserRouter, useLocation } from 'react-router-dom';
 
 import './css/style.scss';
 
-import './charts/ChartjsConfig';
 
 // Import pages
 import Main from './pages/Main';
@@ -20,7 +19,7 @@ function App() {
 
   return (
     <>
-      <Main />
+        <Main />
     </>
   );
 }

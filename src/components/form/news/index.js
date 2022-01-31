@@ -15,10 +15,10 @@ const NewsForm = ({ setOpen, row, action, changePage, setNotificationModal }) =>
 
     const [secciones, setSecciones] = useState([]);
     const [showInputFile, setShowInputFile] = useState(row.imagen ? false : true);
-
+   
     const config = {
         headers: {
-            'Authorization': `Bearer ${apiKey}`,
+            'Authorization': `Bearer ${localStorage.getItem("token")}`,
             'Content-Type': 'multipart/form-data'
         }
     }
@@ -36,7 +36,8 @@ const NewsForm = ({ setOpen, row, action, changePage, setNotificationModal }) =>
             .then(res => {
                 setSecciones(Object.values(res.data))
             }).catch(err => {
-                console.error(err)
+                console.error(err);
+                setNotificationModal('Un error ha ocurrido, intente nuevamente', 'notification');
             })
     }
 
@@ -68,6 +69,7 @@ const NewsForm = ({ setOpen, row, action, changePage, setNotificationModal }) =>
                 }, 3000);
             }).catch(err => {
                 console.error(err)
+                setNotificationModal('Un error ha ocurrido, intente nuevamente', 'notification');
             })
     }
 

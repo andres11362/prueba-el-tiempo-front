@@ -18,6 +18,8 @@ const NewsPage = () => {
 
         axios.get(url).then(res => {
             setData(res.data);
+        }).catch(err => {
+            console.error(err);
         })
     }
 

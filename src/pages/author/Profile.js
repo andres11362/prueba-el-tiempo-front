@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { userProfile } from "../../api/users";
-import { apiKey } from "../../constants/apiKey";
+import UserAvatar from '../../images/user-avatar-32.png';
 
 const Profile = () => {
 
@@ -10,7 +10,7 @@ const Profile = () => {
 
     const config = {
         headers: {
-            'Authorization': `Bearer ${apiKey}`
+            'Authorization': `Bearer ${localStorage.getItem("token")}`
         }
     }
 
@@ -32,7 +32,7 @@ const Profile = () => {
             <div class="rounded-3xl overflow-hidden shadow-xl max-w-xs my-3 bg-gray-800">
                 <img alt="banner" src="https://i.imgur.com/dYcYQ7E.png" class="w-full" />
                 <div class="flex justify-center -mt-8">
-                    <img alt="profile" src="https://i.imgur.com/8Km9tLL.jpg" class="rounded-full border-solid border-white border-2 -mt-3" />
+                    <img alt="profile" src={UserAvatar} class="rounded-full border-solid border-white border-2 -mt-3" />
                 </div>
                 <div class="text-center px-3 pb-6 pt-2">
                     <h3 class="text-white text-sm bold font-sans">

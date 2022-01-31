@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState } from "react"
-import { registerUser, editUser } from '../../../api/users';
+import { registerUser } from '../../../api/users';
 
 const UserForm = ({ setOpen, changePage, setNotificationModal }) => {
 
@@ -30,6 +30,7 @@ const UserForm = ({ setOpen, changePage, setNotificationModal }) => {
             }, 3000);
         }).catch(err => {
             console.error(err)
+            setNotificationModal('Un error ha ocurrido, intente nuevamente', 'notification');
         })
     } 
 

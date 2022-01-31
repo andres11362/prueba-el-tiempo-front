@@ -11,7 +11,7 @@ const EditProfile = () => {
 
     const config = {
         headers: {
-            'Authorization': `Bearer ${apiKey}`
+            'Authorization': `Bearer ${localStorage.getItem("token")}`
         }
     }
 
