@@ -1,5 +1,11 @@
 import React from 'react';
 
+/**
+ * Banner de la aplicación, recibe los datos del usuario
+ * en un localstorage
+ * @returns WelcomeBanner
+ */
+
 function WelcomeBanner() {
 
   const user = JSON.parse(localStorage.getItem('user'));

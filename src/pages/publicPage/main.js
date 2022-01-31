@@ -4,6 +4,11 @@ import { newsList } from "../../api/public";
 import Banner from "../../components/publicComponent/banner";
 import Main from "../../components/publicComponent/main";
 
+/**
+   * Pagina que llama la lista de noticias
+   * @param {*} props 
+   * @returns 
+*/
 const PublicPage = () => {
 
     const [data, setData] = useState([]);

@@ -1,5 +1,10 @@
 import WelcomeBanner from '../components/dashboard/WelcomeBanner';
 
+/**
+   * Dashboard de la aplicacion
+   * @param {*} props 
+   * @returns 
+*/
 function Dashboard() {
 
   return (

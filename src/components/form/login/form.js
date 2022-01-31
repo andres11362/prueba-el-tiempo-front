@@ -4,6 +4,9 @@ import { Link, useHistory } from "react-router-dom";
 import { singIn } from "../../../api/users";
 import NotificationModal from "../../modals/notificationModal";
 
+/**
+ * Formulario de Login de la aplicación
+ */
 const Login = () => {
 
     let history = useHistory();

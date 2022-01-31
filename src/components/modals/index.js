@@ -2,6 +2,14 @@ import NewsForm from "../form/news";
 import SectionForm from "../form/sections";
 import UserForm from "../form/users";
 
+/**
+ * Modal de formularios de la aplicación
+ * Dependiendo del parametro type msotrara 
+ * un tipo diferente de formulario, entre usuarios,
+ * secciones y noticias.
+ * @param {*} param0 
+ * @returns 
+ */
 const Modal = ({ 
     open, 
     setOpen, 
@@ -14,6 +22,11 @@ const Modal = ({
     setCloseNotificationModal
 }) => {
 
+    /**
+     * Decide que tipo de formulario mostrar
+     * segun el prop type
+     * @returns Componente
+     */
     const getFormType = () => {
         switch (type) {
             case 'users':

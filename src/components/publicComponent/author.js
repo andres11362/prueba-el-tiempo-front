@@ -1,6 +1,11 @@
 import { Link } from "react-router-dom";
 import Loader from "../../utils/loader";
 
+/**
+ * Componente que me muestra las noticias de un autor
+ * @param {*} param0 
+ * @returns 
+ */
 const Category = ({ news }) => {
 
     return (

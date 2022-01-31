@@ -3,6 +3,11 @@ import { useState } from "react";
 import { forgot } from "../../../api/users";
 import NotificationModal from "../../modals/notificationModal";
 
+
+/**
+ * Componente formulario de perdida de contraseña
+ * @returns Forger
+ */
 const Forget = () => {
 
     const [data, setData] = useState({

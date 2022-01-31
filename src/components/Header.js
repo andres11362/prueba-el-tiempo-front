@@ -3,6 +3,11 @@ import UserMenu from './header/UserMenu';
 import UserAvatar from '../images/user-avatar-32.png';
 import { Link } from 'react-router-dom';
 
+/**
+ * Header de la aplicación
+ * @param {*} param0 
+ * @returns 
+ */
 function Header({
   sidebarOpen,
   setSidebarOpen

@@ -1,9 +1,14 @@
 import axios from "axios";
 import { useState } from "react"
 import { editUser } from '../../../api/users';
-import { apiKey } from "../../../constants/apiKey";
 import NotificationModal from "../../modals/notificationModal";
 
+
+/**
+ * Formulario de edicion del perfil de usuario
+ * @param {user}  
+ * @returns 
+ */
 const EditUser = ({ user }) => {
 
     const [data, setData] = useState({

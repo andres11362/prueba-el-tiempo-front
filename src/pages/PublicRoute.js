@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import RecoveryPassword from '../components/form/login/recovery';
 import ForgetPage from './auth/forgotPage';
 import LoginPage from './auth/loginPage';
@@ -8,6 +8,12 @@ import AuthorPage from './publicPage/author';
 import CategoryPage from './publicPage/category';
 import PublicPage from './publicPage/main';
 
+
+/**
+ * Rutas publicas, solo se acceden a ellas 
+ * si no se esta autenticado
+ * @returns 
+ */
 const PublicRoute = () => {
     return (
         <Switch>

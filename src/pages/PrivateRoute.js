@@ -8,6 +8,11 @@ import News from './news';
 import Sections from './sections';
 import Users from './users';
 
+/**
+ * Rutas privadas, solo se acceden a ellas 
+ * si se esta autenticado
+ * @returns 
+ */
 const PrivateRoute = () => {
 
   return (

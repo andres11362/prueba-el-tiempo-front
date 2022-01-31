@@ -2,10 +2,15 @@ import { useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import Loader from '../../utils/loader';
 
+/**
+ * Componente que me muestra todas las noticias
+ * @param {*} param0 
+ * @returns 
+ */
 const Main = ({ news }) => {
     return (
         <section>
-            <div className="m-4 lg:flex lg:flex-wrap">
+            <div className="m-4 lg:flex lg:flex-wrap md:flex md:flex-wrap">
                 {(news.data && news.data.length > 0) ? (news.data.map((item, index) => (
                     <div className="p-4 md:w-1/3">
                         <div className="border-2 border-gray-200 rounded-lg">

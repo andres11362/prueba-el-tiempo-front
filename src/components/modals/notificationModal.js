@@ -1,5 +1,11 @@
 import Alert from "../../icons/Alert";
 
+/**
+ * Modal de notificaciones de la aplicación
+ * Dependiendo del parametro type un tipo diferente de notificacion,
+ * @param {*} param0 
+ * @returns 
+ */
 const NotificationModal = ({ open, setOpen, message, id, action, handleDelete, setClose }) => {
 
 

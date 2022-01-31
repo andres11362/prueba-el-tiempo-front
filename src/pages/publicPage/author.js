@@ -5,6 +5,11 @@ import { newsListAuthor } from "../../api/public";
 import Banner from "../../components/publicComponent/banner";
 import Category from "../../components/publicComponent/main";
 
+/**
+   * Pagina que llama la lista de noticias por autor
+   * @param {*} props 
+   * @returns 
+*/
 const AuthorPage = () => {
 
     const [data, setData] = useState([]);

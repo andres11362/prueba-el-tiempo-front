@@ -3,9 +3,13 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { newsUnique } from "../../api/public";
 import Banner from "../../components/publicComponent/banner";
-import Main from "../../components/publicComponent/main";
 import Post from "../../components/publicComponent/post";
 
+/**
+   * Pagina que el componente de noticia individual
+   * @param {*} props 
+   * @returns 
+*/
 const NewsPage = () => {
 
     const [data, setData] = useState({});

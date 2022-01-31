@@ -2,6 +2,12 @@ import axios from "axios";
 import { useState } from "react"
 import { registerUser } from '../../../api/users';
 
+/**
+ * Formulario de creación y edicion de usuarios
+ * Se envian varios parametros para configuración
+ * @param {setOpen,  changePage, setNotificationModal} 
+ * @returns 
+ */
 const UserForm = ({ setOpen, changePage, setNotificationModal }) => {
 
     const [data, setData] = useState({

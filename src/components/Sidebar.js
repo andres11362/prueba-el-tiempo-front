@@ -28,6 +28,9 @@ function Sidebar({
 
   const [menu] = useState(user.is_super_user === 1 ? menuSuperUser : menuUser);
 
+  /**
+   * Sidebar de la aplicación
+   */
   const getIconMenu = (name) => {
     switch (name) {
       case 'users':

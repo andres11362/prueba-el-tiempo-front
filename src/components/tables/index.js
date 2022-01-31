@@ -56,6 +56,12 @@ const Tabla = ({
     pageNumbers.push(index + 1);
   }
 
+  /**
+   * Dependiendo del tipo de segmento de la aplicación
+   * mostrarar estos botones de acción
+   * @param {*} data 
+   * @returns 
+   */
   const actionButtons = (data) => (
     <tr className="p-3 text-center flex justify-center">
       {type !== 'users' && (
@@ -71,6 +77,11 @@ const Tabla = ({
     </tr>
   );
 
+  /**
+   * Función que genera las celdas de la tabla
+   * @param {*} props 
+   * @returns 
+   */
   const RenderRow = (props) => props.keys.map((key, index) => (
     <td className='max-w-1'>
       {key !== 'acciones' ? (
@@ -105,6 +116,11 @@ const Tabla = ({
     </td>
   ));
 
+  /**
+   * Función que genera las filas de la tabla
+   * @param {*} props 
+   * @returns 
+   */
   const getRowsData = () => {
 
     const { data } = rows;
@@ -116,6 +132,10 @@ const Tabla = ({
     ));
   }
 
+  /**
+   * Paginador de la tabla
+   * @returns 
+   */
   const paginator = () => (
     <>
       <div className="font-semibold text-center my-3">

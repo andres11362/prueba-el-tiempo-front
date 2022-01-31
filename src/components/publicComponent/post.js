@@ -11,7 +11,12 @@ import {
 } from "react-share";
 import Loader from '../../utils/loader';
 
-
+/**
+ * Componente que me muestra una  noticias de un autor
+ * Contiene un componente de redes sociales
+ * @param {*} param0 
+ * @returns 
+ */
 const Post = ({ news }) => {
 
     const history = useHistory();

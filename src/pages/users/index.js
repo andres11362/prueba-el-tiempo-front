@@ -3,11 +3,16 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { users } from '../../api/users';
-import { apiKey } from '../../constants/apiKey';
 import Tabla from '../../components/tables';
 import Loader from '../../utils/loader';
 import NotificationModal from '../../components/modals/notificationModal';
 
+/**
+   * Pagina que llama el componente tabla
+   * para usuarios
+   * @param {*} props 
+   * @returns 
+*/
 const Users = () => {
 
     const [headers, setHeaders] = useState([]);

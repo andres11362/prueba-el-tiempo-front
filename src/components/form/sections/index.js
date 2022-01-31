@@ -1,9 +1,14 @@
 import axios from "axios";
 import { useState } from "react"
 import { sections } from '../../../api/sections';
-import { apiKey } from "../../../constants/apiKey";
 import { routeFiles } from '../../../constants/routeFiles';
 
+/**
+ * Formulario de creación y edicion de secciones
+ * Se envian varios parametros para configuración
+ * @param {setOpen, row, action, changePage, setNotificationModal} 
+ * @returns 
+ */
 const SectionForm = ({ setOpen, row, action, changePage, setNotificationModal }) => {
 
     const [data, setData] = useState({
@@ -27,6 +32,11 @@ const SectionForm = ({ setOpen, row, action, changePage, setNotificationModal })
         })
     }
 
+    /**
+     * Se valida por medio del campo action que tipo de formulario es
+     * Ademas de envia en un form data para el manejo de archivos
+     * @param {e} e 
+     */
     const handleSubmit = (e) => {
 
         e.preventDefault();

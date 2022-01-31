@@ -3,11 +3,15 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { sections } from '../../api/sections';
-import { apiKey } from '../../constants/apiKey';
 import Tabla from '../../components/tables';
 import Loader from '../../utils/loader';
 import NotificationModal from '../../components/modals/notificationModal';
-
+/**
+   * Pagina que llama el componente tabla
+   * para secciones
+   * @param {*} props 
+   * @returns 
+*/
 const Sections = () => {
 
     const [headers, setHeaders] = useState([]);

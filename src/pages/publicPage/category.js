@@ -5,6 +5,11 @@ import { newsListSection } from "../../api/public";
 import Banner from "../../components/publicComponent/banner";
 import Category from "../../components/publicComponent/main";
 
+/**
+   * Pagina que llama la lista de noticias por sección
+   * @param {*} props 
+   * @returns 
+*/
 const CategoryPage = () => {
 
     const [data, setData] = useState([]);

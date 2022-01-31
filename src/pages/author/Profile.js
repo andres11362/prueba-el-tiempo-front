@@ -3,7 +3,10 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { userProfile } from "../../api/users";
 import UserAvatar from '../../images/user-avatar-32.png';
-
+/**
+ * Pagina de perfil del usuario
+ * @returns 
+ */
 const Profile = () => {
 
     const [user, setUser] = useState({});

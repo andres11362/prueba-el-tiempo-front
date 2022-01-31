@@ -4,9 +4,12 @@ import { userProfileNews } from "../../api/users";
 import { news } from '../../api/news';
 import NotificationModal from "../../components/modals/notificationModal";
 import Tabla from "../../components/tables";
-import { apiKey } from "../../constants/apiKey";
 import Loader from "../../utils/loader";
 
+/**
+ * Llama la lista de noticias de un usuario
+ * @returns 
+ */
 const Newslist = () => {
 
     const [user, setUser] = useState({});

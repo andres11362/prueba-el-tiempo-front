@@ -4,7 +4,11 @@ import { useHistory, useParams } from "react-router-dom";
 import { recovery } from "../../../api/users";
 import NotificationModal from "../../modals/notificationModal";
 
-
+/**
+ * Formulario de recuperación de contraseña
+ * se usa el token del usuario desde el parametro
+ * @returns RecoveryPassword
+ */
 const RecoveryPassword = () => {
     let  { token } = useParams();
     let history = useHistory();

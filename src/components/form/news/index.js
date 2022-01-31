@@ -2,9 +2,15 @@ import axios from "axios";
 import { useEffect, useState } from "react"
 import { sectionsSelect } from '../../../api/sections';
 import { news } from '../../../api/news';
-import { apiKey } from "../../../constants/apiKey";
+
 import { routeFiles } from "../../../constants/routeFiles";
 
+/**
+ * Formulario de creación y edicion de noticias
+ * Se envian varios parametros para configuración
+ * @param {setOpen, row, action, changePage, setNotificationModal} 
+ * @returns 
+ */
 const NewsForm = ({ setOpen, row, action, changePage, setNotificationModal }) => {
 
     const [data, setData] = useState({
@@ -41,6 +47,11 @@ const NewsForm = ({ setOpen, row, action, changePage, setNotificationModal }) =>
             })
     }
 
+    /**
+     * Se valida por medio del campo action que tipo de formulario es
+     * Ademas de envia en un form data para el manejo de archivos
+     * @param {e} e 
+     */
     const handleSubmit = (e) => {
         
         e.preventDefault();

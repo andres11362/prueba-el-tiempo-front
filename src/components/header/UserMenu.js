@@ -1,12 +1,16 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import Transition from '../../utils/Transition';
 
 import UserAvatar from '../../images/user-avatar-32.png';
-import { apiKey } from '../../constants/apiKey';
 import axios from 'axios';
 import { singOut } from '../../api/users';
 
+/**
+ * Menu de usuario de la esquina superior derecha
+ * en caso de no estar autenticado muestra la ruta al login
+ * @returns UserMenu
+ */
 function UserMenu() {
 
   const [dropdownOpen, setDropdownOpen] = useState(false);
