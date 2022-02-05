@@ -3,7 +3,7 @@
 
 Esta es la construccion de la parte front end para presentar una prueba para el tiempo, segun los requerimientos solicitados.
 
-Esta aplicación es desarrollada en ReactJS, ademas usa.
+Esta aplicación es desarrollada en ReactJS, ademas usa:
 
 - TailwindCSS
 - React Router v5
